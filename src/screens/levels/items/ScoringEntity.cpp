@@ -24,7 +24,9 @@ ScoringEntity::ScoringEntity(const string& sprite,
 
 ScoringEntity::~ScoringEntity() {}
 
+#ifndef USE_MOUSE
 bool ScoringEntity::isBroken(short speed) {
+
     if (!m_isBroken) {
         m_isBroken = (speed >= m_minimalSpeed) ;
         if (m_isBroken) {
@@ -34,6 +36,16 @@ bool ScoringEntity::isBroken(short speed) {
 
     return m_isBroken ;
 }
+#else
+bool ScoringEntity::isBroken(short) {
+    if (!m_isBroken) {
+        m_isBroken = true ;
+        onBreak() ;
+    }
+
+    return m_isBroken ;
+}
+#endif
 
 bool ScoringEntity::isBroken(CursorEntity* cursor) {
     return isBroken(cursor -> getSpeed()) ;

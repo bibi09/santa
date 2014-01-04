@@ -15,7 +15,7 @@
 class PhysicsEntity : public Entity {
     protected:
         /** @brief  Maximal speed when falling. */
-        const unsigned char MAX_FALL_SPEED = 10 ;
+        static const unsigned char MAX_FALL_SPEED ;
 
         /** @brief  Step to rotate the sprite. */
         float m_angleStep ;

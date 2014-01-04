@@ -49,6 +49,8 @@ class AudioManager : private NoCopy {
          */
         static AudioManager* getInstance() ;
 
+        /** @brief  Load a sound. */
+        void load(const std::string& name) ;
 
         /** @brief  Play a sound. Load it if not yet in memory. */
         void playSound(const std::string& name, bool loop = false) ;

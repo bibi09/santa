@@ -43,12 +43,7 @@ AudioManager* AudioManager::getInstance() {
 }
 
 
-
-void AudioManager::playSound(const string& name, bool loop) {
-    ALLEGRO_PLAYMODE mode ;
-    mode = (loop) ? ALLEGRO_PLAYMODE_LOOP : ALLEGRO_PLAYMODE_ONCE ;
-
-    sem_wait(&Access) ;
+void AudioManager::load(const string& name) {
     // Load the sound if needed
     if (m_sounds.count(name) == 0) {
         string path = "media/sfx/" + name + ".wav" ;
@@ -58,6 +53,24 @@ void AudioManager::playSound(const string& name, bool loop) {
         al_reserve_samples(m_sounds.size() + 1) ;
         m_sounds[name] = al_load_sample(path.c_str()) ;
     }
+}
+
+
+void AudioManager::playSound(const string& name, bool loop) {
+    ALLEGRO_PLAYMODE mode ;
+    mode = (loop) ? ALLEGRO_PLAYMODE_LOOP : ALLEGRO_PLAYMODE_ONCE ;
+
+    sem_wait(&Access) ;
+    load(name) ;
+//    // Load the sound if needed
+//    if (m_sounds.count(name) == 0) {
+//        string path = "media/sfx/" + name + ".wav" ;
+//        #ifdef DEBUG
+//        Logger::print("Load sound: " + path) ;
+//        #endif
+//        al_reserve_samples(m_sounds.size() + 1) ;
+//        m_sounds[name] = al_load_sample(path.c_str()) ;
+//    }
 
     // Play the sound
     ALLEGRO_SAMPLE_INSTANCE* sndInstance = al_create_sample_instance(m_sounds[name]) ;

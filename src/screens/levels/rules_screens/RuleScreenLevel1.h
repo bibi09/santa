@@ -18,7 +18,6 @@ class RuleScreenLevel1 : public RuleScreen {
         /** @brief  Destroy a RuleScreenLevel1. */
         virtual ~RuleScreenLevel1() ;
 
-
     private:
         /**
          * @brief   Action to play the level.

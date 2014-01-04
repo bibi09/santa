@@ -2,6 +2,7 @@
 #include "../Logger.h"
 #include "../../screens/menus/StoryScreen.h"
 #include <string>
+#include <iostream>
 
 using namespace std ;
 
@@ -32,6 +33,7 @@ ScreenManager* ScreenManager::getInstance() {
 void ScreenManager::pushScreen(GameScreen* screen) {
     assert(screen != 0) ;
     m_screens.push(screen) ;
+    m_screens.top() -> cache() ;
 }
 
 void ScreenManager::previousScreen() {

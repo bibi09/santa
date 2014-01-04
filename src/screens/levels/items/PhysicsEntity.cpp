@@ -3,6 +3,8 @@
 
 using namespace std ;
 
+const unsigned char PhysicsEntity::MAX_FALL_SPEED = 10 ;
+
 
 PhysicsEntity::PhysicsEntity(const string& sprite) : Entity(sprite) {
     m_speed.x = 0.f ;

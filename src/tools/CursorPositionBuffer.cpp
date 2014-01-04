@@ -3,11 +3,11 @@
 
 using namespace std ;
 
-const int CursorPositionBuffer::BUFFER_MAXSIZE ;
+
 #ifdef USE_MOUSE
-    float CursorPositionBuffer::POSITION_WEIGHTS[CursorPositionBuffer::BUFFER_MAXSIZE] = {0.0, 0.0, 1.0} ;
+    float CursorPositionBuffer::POSITION_WEIGHTS[CURSOR_BUFFER_MAX_SIZE] = {1.0} ;
 #else
-    float CursorPositionBuffer::POSITION_WEIGHTS[CursorPositionBuffer::BUFFER_MAXSIZE] = {0.01, 0.05, 0.09, 0.15, 0.70} ;
+    float CursorPositionBuffer::POSITION_WEIGHTS[CURSOR_BUFFER_MAX_SIZE] = {0.01, 0.05, 0.09, 0.15, 0.70} ;
 #endif
 CursorPositionBuffer* CursorPositionBuffer::Singleton = 0 ;
 sem_t CursorPositionBuffer::Access ;
@@ -15,7 +15,7 @@ sem_t CursorPositionBuffer::Access ;
 
 CursorPositionBuffer::CursorPositionBuffer() {
     assert(sem_init(&Access, 0, 1) == 0) ;
-    m_positions.reserve(BUFFER_MAXSIZE + 1) ;
+    m_positions.reserve(CURSOR_BUFFER_MAX_SIZE + 1) ;
 
     Position initCursorPosition = {-1.f, -1.f} ;
     m_positions.push_back(initCursorPosition) ;
@@ -39,7 +39,7 @@ void CursorPositionBuffer::addPosition(float x, float y) {
     sem_wait(&Access) ;                             // -- Critical section
 
     m_positions.push_back(pos) ;
-    if (m_positions.size() > BUFFER_MAXSIZE)
+    if (m_positions.size() > CURSOR_BUFFER_MAX_SIZE)
         m_positions.erase(m_positions.begin()) ;
 
     sem_post(&Access) ;                             // Critical section --
@@ -125,7 +125,7 @@ Position CursorPositionBuffer::meanPosition() {
     #ifndef USE_MOUSE
         Position mean = {0.f, 0.f} ;
 
-        for (int i = 0 ; i < BUFFER_MAXSIZE ; i++) {
+        for (int i = 0 ; i < CURSOR_BUFFER_MAX_SIZE ; i++) {
             mean.x += POSITION_WEIGHTS[i] * m_positions[i].x ;
             mean.y += POSITION_WEIGHTS[i] * m_positions[i].y ;
         }

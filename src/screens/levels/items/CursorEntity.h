@@ -2,6 +2,7 @@
 #define __CURSOR_ENTITY_H__
 
 #include "../../../tools/CursorPositionBuffer.h"
+#include "../../../constants.h"
 #include "Entity.h"
 
 #include <allegro5/allegro.h>
@@ -12,7 +13,7 @@ class CursorEntity : public Entity, private NoCopy {
         static CursorEntity* Singleton ;
 
         /** @brief  Color used to display a tail after the cursor. */
-        ALLEGRO_COLOR m_tailColors[CursorPositionBuffer::BUFFER_MAXSIZE] ;
+        ALLEGRO_COLOR m_tailColors[CURSOR_BUFFER_MAX_SIZE] ;
         /** @brief  Speed of the cursor. */
         unsigned short m_speed ;
 

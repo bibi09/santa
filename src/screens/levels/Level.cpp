@@ -8,7 +8,7 @@ using namespace std ;
 
 
 Level::Level(const std::string& background,
-      const std::string& bgm) : GameScreen(background, bgm) {
+             const std::string& bgm) : GameScreen(background, bgm) {
     m_waitSpawn = 0 ;
     Score::getInstance() -> reset() ;
 }
@@ -17,7 +17,7 @@ Level::Level(const std::string& background,
 Level::~Level() {}
 
 void Level::update() {
-    m_cursor -> update() ;
+    CursorEntity::getInstance() -> update() ;
 
     updatePhysicsEntities() ;
     ConfettiManager::update() ;
@@ -58,7 +58,7 @@ void Level::additionnalDisplay() {
     for (auto& entity : m_items)
         entity -> display() ;
 
-    m_cursor -> display() ;
+    CursorEntity::getInstance() -> display() ;
     ConfettiManager::display() ;
     Score::getInstance() -> display() ;
 }
@@ -97,8 +97,8 @@ void Level::updatePhysicsEntities() {
             delete ent ;
         }
         else {
-            if ((m_cursor -> cuts(ent))
-                    && (ent -> isBroken(m_cursor))
+            if ((CursorEntity::getInstance() -> cuts(ent))
+                    && (ent -> isBroken(CursorEntity::getInstance()))
                     && (ent -> disappearOnBreak())) {
                 it = m_items.erase(it) ;
                 delete ent ;

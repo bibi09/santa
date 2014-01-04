@@ -4,6 +4,15 @@
 #include "../../tools/Logger.h"
 #include "../../tools/managers/ScreenManager.h"
 
+#include "items/bonus/BlueGift.h"
+#include "items/bonus/RedGift.h"
+#include "items/bonus/OrangeGift.h"
+#include "items/bonus/Zuurstok.h"
+#include "items/malus/BombGift.h"
+#include "items/malus/Gnome.h"
+#include "items/malus/Pan.h"
+#include "items/malus/SnowGlobe.h"
+
 using namespace std ;
 
 
@@ -16,6 +25,22 @@ Level1::Level1() : Level("bg_level1", "level1") {
 }
 
 Level1::~Level1() {}
+
+
+void Level1::preload() {
+    Position pos ;
+    Speed speed ;
+
+    new Zuurstok(pos, speed) ;
+    new OrangeGift(pos, speed) ;
+    new RedGift(pos, speed) ;
+    new BlueGift(pos, speed) ;
+    new BombGift(pos, speed) ;
+    new Pan(pos, speed) ;
+    new SnowGlobe(pos, speed) ;
+    new Gnome(pos, speed) ;
+}
+
 
 void Level1::levelEnd() {
     static Score* score = Score::getInstance() ;

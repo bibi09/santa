@@ -9,8 +9,8 @@ CursorEntity* CursorEntity::Singleton = 0 ;
 CursorEntity::CursorEntity() : Entity("cursor/snowball") {
     setPosition(-1.f, -1.f) ;
 
-    char step = 128 / CursorPositionBuffer::BUFFER_MAXSIZE ;
-    for (int i = 0 ; i < CursorPositionBuffer::BUFFER_MAXSIZE ; i++) {
+    char step = 128 / CURSOR_BUFFER_MAX_SIZE ;
+    for (int i = 0 ; i < CURSOR_BUFFER_MAX_SIZE ; i++) {
         m_tailColors[i] = al_map_rgba(200, 240, 255, 96 + (i * step)) ;
     }
 }
@@ -30,6 +30,7 @@ CursorEntity* CursorEntity::getInstance() {
 bool CursorEntity::cuts(Entity* entity) {
     assert(entity != this) ;
 
+#ifndef USE_MOUSE
     CursorPositionBuffer* cursorPos = CursorPositionBuffer::getInstance() ;
     std::vector<Position> previousPos = cursorPos -> getPositions() ;
 
@@ -40,11 +41,16 @@ bool CursorEntity::cuts(Entity* entity) {
     }
 
     return false ;
+#else
+    CursorPositionBuffer* cursorPos = CursorPositionBuffer::getInstance() ;
+    return entity -> isTouched(cursorPos -> getLastPosition()) ;
+#endif
 }
 
 
 /** @brief Display the cursor. */
 void CursorEntity::display() {
+#ifndef USE_MOUSE
     // Draw the cursor tail
     CursorPositionBuffer* cursorPos = CursorPositionBuffer::getInstance() ;
     std::vector<Position> previousPos = cursorPos -> getPositions() ;
@@ -56,12 +62,9 @@ void CursorEntity::display() {
                      previousPos[i].x,
                      previousPos[i].y,
                      m_tailColors[i],
-                    #ifdef USE_MOUSE
-                     i / 5.f) ;
-                    #else
                      i) ;
-                    #endif
     }
+#endif
 
     // Draw the cursor itself
     al_draw_bitmap(m_sprite, m_bounds.getX(), m_bounds.getY(), 0) ;

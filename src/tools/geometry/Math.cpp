@@ -1,6 +1,9 @@
 #include "Math.h"
 
 Math Math::Singleton ;
+const double Math::pi = 4. * atan(1.) ;
+const double Math::rad_coeff = Math::pi / 180. ;
+const double Math::deg_coeff = 180. / Math::pi ;
 
 
 Math::Math() throw() {}

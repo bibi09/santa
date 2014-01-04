@@ -50,7 +50,7 @@ class Entity {
          * @param   p   Point to test.
          * @return  true if the given point is in this entity; false otherwise.
          */
-        virtual bool isTouched(Position& p) ;
+        virtual bool isTouched(const Position& p) ;
 
         /**
          * @brief   Tests if the specified entity is inside this one.

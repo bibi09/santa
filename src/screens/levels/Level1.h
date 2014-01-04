@@ -2,14 +2,6 @@
 #define __LEVEL_ONE_H__
 
 #include "Level.h"
-#include "items/bonus/BlueGift.h"
-#include "items/bonus/RedGift.h"
-#include "items/bonus/OrangeGift.h"
-#include "items/bonus/Zuurstok.h"
-#include "items/malus/BombGift.h"
-#include "items/malus/Gnome.h"
-#include "items/malus/Pan.h"
-#include "items/malus/SnowGlobe.h"
 
 
 /**
@@ -26,6 +18,9 @@ class Level1 : public Level {
 
 
     protected:
+        /** @brief  Preload media used by the screen. */
+        virtual void preload() ;
+
         /**
          * @brief  Test if the goal of the level is reached and do the
          * corresponding action.

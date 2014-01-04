@@ -1,6 +1,7 @@
 #include "Entity.h"
 #include "../../../tools/managers/SpriteManager.h"
 #include <allegro5/allegro_primitives.h>
+#include <iostream>
 
 using namespace std ;
 
@@ -46,11 +47,15 @@ bool Entity::isAlive() {
 }
 
 
-bool Entity::isTouched(Position& p) {
+bool Entity::isTouched(const Position& p) {
     bool touched = m_bounds.contains(p) ;
 
-    if (touched && m_sprites.count("touched") > 0)
-        m_sprite = m_sprites["touched"] ;
+    if (touched) {
+        if (m_sprites.count("touched") > 0)
+            m_sprite = m_sprites["touched"] ;
+        else if (m_sprites.count("cutted") > 0)
+            m_sprite = m_sprites["cutted"] ;
+    }
 
     return touched ;
 }
@@ -58,8 +63,12 @@ bool Entity::isTouched(Position& p) {
 bool Entity::isTouched(Entity* other) {
     bool touched = m_bounds.contains(other -> m_bounds) ;
 
-    if (touched && m_sprites.count("touched") > 0)
-        m_sprite = m_sprites["touched"] ;
+    if (touched) {
+        if (m_sprites.count("touched") > 0)
+            m_sprite = m_sprites["touched"] ;
+        else if (m_sprites.count("cutted") > 0)
+            m_sprite = m_sprites["cutted"] ;
+    }
 
     return touched ;
 }

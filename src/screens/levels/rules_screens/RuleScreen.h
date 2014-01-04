@@ -45,6 +45,9 @@ class RuleScreen : public GameScreen {
         virtual void update() ;
 
     protected:
+        /** @brief  Preload media used by the screen. */
+        virtual void preload() ;
+
         /** @brief  Custom display function adapted to the screen. */
         virtual void additionnalDisplay() ;
 

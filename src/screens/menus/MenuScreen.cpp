@@ -43,6 +43,8 @@ void MenuScreen::update() {
     }
 }
 
+void MenuScreen::preload() {}
+
 
 void MenuScreen::additionnalDisplay() {
     al_draw_text(m_fonts["title"],

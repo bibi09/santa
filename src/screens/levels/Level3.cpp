@@ -27,6 +27,22 @@ Level3::Level3() : Level("bg_level3", "level3") {
 
 Level3::~Level3() {}
 
+
+void Level3::preload() {
+    Position pos ;
+    Speed speed ;
+
+    new BlueGift(pos, speed) ;
+    new RedGift(pos, speed) ;
+    new GingerbreadMan(pos, speed) ;
+    new Zuurstok(pos, speed) ;
+    new BombGift(pos, speed) ;
+    new Pan(pos, speed) ;
+    new SnowGlobe(pos, speed) ;
+    new AngryGnome(pos, speed) ;
+}
+
+
 void Level3::levelEnd() {
     static Score* score = Score::getInstance() ;
     if (score -> getScore() >= 10) {

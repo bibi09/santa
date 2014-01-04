@@ -50,6 +50,9 @@ void RuleScreen::update() {
 }
 
 
+void RuleScreen::preload() {}
+
+
 void RuleScreen::additionnalDisplay() {
     m_title -> display() ;
     m_rule -> display() ;

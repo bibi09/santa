@@ -37,7 +37,13 @@ class GameScreen {
         /** @brief  Update the game screen. */
         virtual void update() = 0 ;
 
+        /** @brief  Cache media used by the screen. */        
+        void cache() ;
+
     protected:
+        /** @brief  Preload media used by the screen. */
+        virtual void preload() = 0 ;
+
         /** @brief  Custom display function adapted to the screen. */
         virtual void additionnalDisplay() = 0 ;
 } ;

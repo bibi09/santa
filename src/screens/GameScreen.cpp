@@ -29,3 +29,9 @@ void GameScreen::display() {
     al_draw_bitmap(m_background, 0, 0, 0) ;
     additionnalDisplay() ;
 }
+
+
+void GameScreen::cache() {
+    CursorEntity::getInstance() ;
+    preload() ;
+}

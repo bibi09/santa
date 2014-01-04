@@ -18,6 +18,9 @@ class Level3 : public Level {
 
 
     protected:
+        /** @brief  Preload media used by the screen. */
+        virtual void preload() ;
+
         /**
          * @brief  Test if the goal of the level is reached and do the
          * corresponding action.

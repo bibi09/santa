@@ -18,12 +18,12 @@ class Math : private NoCopy {
 
 
         /** @brief  Value of PI. */
-        const double pi = 4. * atan(1.) ;
+        static const double pi ;
 
         /** @brief  Coefficient used to convert degrees to radians. */
-        const double rad_coeff = Math::pi / 180. ;
+        static const double rad_coeff ;
         /** @brief  Coefficient used to convert radians to degrees. */
-        const double deg_coeff = 180. / Math::pi ;
+        static const double deg_coeff ;
 
 
                                                            /* ** FUNCTIONS ** */

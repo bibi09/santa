@@ -26,6 +26,21 @@ Level2::Level2() : Level("bg_level2", "level2") {
 
 Level2::~Level2() {}
 
+void Level2::preload() {
+    Position pos ;
+    Speed speed ;
+
+    new BlueGift(pos, speed) ;
+    new RedGift(pos, speed) ;
+    new SpecialGift(pos, speed) ;
+    new Zuurstok(pos, speed) ;
+    new BombGift(pos, speed) ;
+    new Pan(pos, speed) ;
+    new SnowGlobe(pos, speed) ;
+    new Gnome(pos, speed) ;
+}
+
+
 void Level2::levelEnd() {
     static Score* score = Score::getInstance() ;
     if (score -> getScore() >= 5) {

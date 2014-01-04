@@ -4,7 +4,7 @@ BINARY = santa
 
 
 # Compiler options
-CCOPT = -W -Wall -std=c++11
+CCOPT = -W -Wall -std=c++0x
 
 ifndef NDEBUG
     ECHO_DEBUG = "Compile in DEBUG mode"

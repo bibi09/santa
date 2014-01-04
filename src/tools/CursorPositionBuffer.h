@@ -3,6 +3,7 @@
 
 #include "patterns/NoCopy.h"
 #include "geometry/Position.h"
+#include "../constants.h"
 
 #include <cassert>
 #include <cmath>
@@ -15,18 +16,9 @@
  * @author  Denis CARLUS
  */
 class CursorPositionBuffer : private NoCopy {
-    public:
-        #ifdef USE_MOUSE
-        /** @brief  Maximal size of the buffer. */
-        static const int BUFFER_MAXSIZE = 3 ;
-        #else
-        /** @brief  Maximal size of the buffer. */
-        static const int BUFFER_MAXSIZE = 5 ;
-        #endif
-
     private:
         /** Position weights */
-        static float POSITION_WEIGHTS[BUFFER_MAXSIZE] ;
+        static float POSITION_WEIGHTS[CURSOR_BUFFER_MAX_SIZE] ;
         /** @brief  Singleton of the CursorPositionBuffer. */
         static CursorPositionBuffer* Singleton ;
 

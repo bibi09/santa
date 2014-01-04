@@ -51,6 +51,9 @@ class MenuScreen : public GameScreen {
 
 
     protected:
+        /** @brief  Preload media used by the screen. */
+        virtual void preload()  ;
+
         /**
          * @brief  Display the screen.
          * @warning The fonts must have been defined for title and texts.

@@ -9,6 +9,9 @@ BlueGift::BlueGift(float xPos,
 }
 
 BlueGift::BlueGift(Position pos,
-                   Speed speed) : BlueGift(pos.x, pos.y, speed.x, speed.y) {}
+                   Speed speed) : BonusEntity("blue_gift", 50, 35) {
+    setPosition(pos.x, pos.y) ;
+    setInitialSpeed(speed.x, speed.y) ;
+}
 
 BlueGift::~BlueGift() {}

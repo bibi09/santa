@@ -12,9 +12,12 @@ GingerbreadMan::GingerbreadMan(float xPos,
 }
 
 GingerbreadMan::GingerbreadMan(Position pos,
-                               Speed speed) : GingerbreadMan(pos.x,
-                                                          pos.y,
-                                                          speed.x,
-                                                          speed.y) {}
+                               Speed speed) : BonusEntity("gingerbread_man",
+                                                           100,
+                                                           1) {
+    m_soundPlayed = "golden_bonus" ;
+    setPosition(pos.x, pos.y) ;
+    setInitialSpeed(speed.x, speed.y) ;
+}
 
 GingerbreadMan::~GingerbreadMan() {}

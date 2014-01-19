@@ -11,12 +11,14 @@ SnowGlobe::SnowGlobe(float xPos,
                      float ySpeed) : MalusEntity("items/snow_globe", 20, -10) {
     setPosition(xPos, yPos) ;
     setInitialSpeed(xSpeed, ySpeed) ;
-    m_angleStep = 0.f ;
 }
 
 /** @brief  Create a new SnowGlobe with position and speed. */
 SnowGlobe::SnowGlobe(Position pos,
-                     Speed speed) : SnowGlobe(pos.x, pos.y, speed.x, speed.y) {}
+                     Speed speed) : MalusEntity("items/snow_globe", 20, -10) {
+    setPosition(pos.x, pos.y) ;
+    setInitialSpeed(speed.x, speed.y) ;
+}
 
 /** @brief  Destruction of a SnowGlobe. */
 SnowGlobe::~SnowGlobe() {}

@@ -10,7 +10,7 @@ ConfettiManager::ConfettiManager() {
     assert(sem_init(&Access, 0, 1) == 0) ;
 }
 
-ConfettiManager::~ConfettiManager() {
+ConfettiManager::~ConfettiManager() throw() {
     sem_destroy(&Access) ;
 }
 
@@ -18,7 +18,7 @@ ConfettiManager::~ConfettiManager() {
 void ConfettiManager::update() {
     sem_wait(&Access) ;
 
-    for (auto it = Confetti.begin() ; it != Confetti.end() ; it++) {
+    for (ConfettiIterator it = Confetti.begin() ; it != Confetti.end() ; it++) {
         ConfettiEntity* c = *it ;
 
         if (!c -> isAlive()) {
@@ -53,6 +53,7 @@ void ConfettiManager::addConfetti(ConfettiEntity* confetti) {
 
 /** @brief  Display the alive confetti. */
 void ConfettiManager::display() {
-    for (auto& confetti : Confetti)
-        confetti -> display() ;
+    for (ConfettiIterator it = Confetti.begin() ; it != Confetti.end() ; it++) {
+        (*it) -> display() ;
+	}
 }

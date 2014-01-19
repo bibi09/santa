@@ -48,8 +48,9 @@ Component* Component::merge(Component* other) {
             biggest -> m_maxBound = smallest -> m_maxBound ;
 
         // Update the component ID of the pixels
-        for (auto& px : (smallest -> m_pixels)) {
-            px -> setComponentID(biggest -> m_id) ;
+		unsigned int max = (smallest -> m_pixels).size() ;
+        for (unsigned int i = 0 ; i < max ; i++) {
+            smallest -> m_pixels[i] -> setComponentID(biggest -> m_id) ;
         }
 
         // Transfert the pixels to the current component
@@ -76,10 +77,11 @@ void Component::addPixel(Pixel* px) {
 
 
 void Component::draw(Mat& picture) {
-    for (auto& px : m_pixels) {
+	unsigned int max = m_pixels.size() ;
+    for (unsigned int i = 0 ; i < max ; i++) {
         line(picture,
-             Point((px -> m_x), (px -> m_y)),
-             Point((px -> m_x), (px -> m_y)),
+             Point((m_pixels[i] -> m_x), (m_pixels[i] -> m_y)),
+             Point((m_pixels[i] -> m_x), (m_pixels[i] -> m_y)),
              m_color);
     }
 }

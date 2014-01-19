@@ -13,7 +13,12 @@ Gnome::Gnome(float xPos,
 }
 
 Gnome::Gnome(Position pos,
-             Speed speed) : Gnome(pos.x, pos.y, speed.x, speed.y) {}
+             Speed speed) : MalusEntity("items/gnome", 5, -100) {
+    setPosition(pos.x, pos.y) ;
+    setInitialSpeed(speed.x, speed.y) ;
+    setCuttedSprite("items/cutted/gnome_cutted") ;
+    makeDisappearOnBreak(false) ;
+}
 
 Gnome::~Gnome() {}
 

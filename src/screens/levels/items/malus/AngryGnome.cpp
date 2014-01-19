@@ -13,8 +13,12 @@ AngryGnome::AngryGnome(float xPos,
 }
 
 AngryGnome::AngryGnome(Position pos,
-                       Speed speed) : AngryGnome(pos.x, pos.y,
-                                                 speed.x, speed.y) {}
+                       Speed speed) : MalusEntity("items/angry_gnome", 5, -1) {
+    setPosition(pos.x, pos.y) ;
+    setInitialSpeed(speed.x, speed.y) ;
+    setCuttedSprite("items/cutted/angry_gnome_cutted") ;
+    makeDisappearOnBreak(false) ;
+}
 
 AngryGnome::~AngryGnome() {}
 

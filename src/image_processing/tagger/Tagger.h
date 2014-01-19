@@ -20,6 +20,8 @@ using namespace cv ;
 #endif
 
 class Tagger {
+	typedef std::map<unsigned int, Component>::iterator ComponentIterator ;
+
     protected:
         /** @brief  The picture used by the tagger. */
         Mat m_picture ;

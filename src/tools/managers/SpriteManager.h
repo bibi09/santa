@@ -6,6 +6,7 @@
 #include <allegro5/allegro_image.h>
 #include <assert.h>
 #include <semaphore.h>
+#include <string>
 #include <map>
 
 /**

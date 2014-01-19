@@ -20,6 +20,9 @@
  * @author  Denis CARLUS
  */
 class MenuScreen : public GameScreen {
+	typedef std::map<std::string, ALLEGRO_FONT*>::iterator FontIterator ;
+	typedef std::map<std::string, ALLEGRO_COLOR>::iterator ColorIterator ;
+
     private:
         /** @brief  Fonts used on the screen. */
         std::map<std::string, ALLEGRO_FONT*> m_fonts ;

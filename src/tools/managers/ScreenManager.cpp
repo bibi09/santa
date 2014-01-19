@@ -15,7 +15,7 @@ ScreenManager::ScreenManager() {
     pushScreen(new StoryScreen()) ;
 }
 
-ScreenManager::~ScreenManager() {
+ScreenManager::~ScreenManager() throw() {
     while (!m_screens.empty()) {
         delete m_screens.top() ;
         m_screens.pop() ;

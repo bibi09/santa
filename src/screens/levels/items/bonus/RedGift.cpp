@@ -9,6 +9,9 @@ RedGift::RedGift(float xPos,
 }
 
 RedGift::RedGift(Position pos,
-                 Speed speed) : RedGift(pos.x, pos.y, speed.x, speed.y) {}
+                 Speed speed) : BonusEntity("red_gift", 40, 10) {
+    setPosition(pos.x, pos.y) ;
+    setInitialSpeed(speed.x, speed.y) ;
+}
 
 RedGift::~RedGift() {}

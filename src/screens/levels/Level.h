@@ -16,6 +16,8 @@
  * @author  Denis CARLUS
  */
 class Level : public GameScreen {
+	typedef std::list<ScoringEntity*>::iterator EntityIterator ;
+
     protected:
         /** @brief  Active items that are spawned and that can be broken. */
         std::list<ScoringEntity*> m_items ;

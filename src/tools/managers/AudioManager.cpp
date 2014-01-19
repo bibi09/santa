@@ -26,12 +26,12 @@ AudioManager::AudioManager() {
 }
 
 
-AudioManager::~AudioManager() {
+AudioManager::~AudioManager() throw() {
     sem_destroy(&Access) ;
 
     stopBGM() ;
-    for (auto& pair : m_sounds)
-        al_destroy_sample(pair.second) ;
+	for (SampleIterator it = m_sounds.begin() ; it != m_sounds.end() ; it++)
+        al_destroy_sample(it -> second) ;
 }
 
 

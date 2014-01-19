@@ -1,5 +1,6 @@
 #include "Score.h"
 #include <cassert>
+#include <sstream>
 
 using namespace std ;
 
@@ -36,7 +37,13 @@ void Score::addScore(int value) {
 
 
 void Score::display() {
-    std::string text = "Score: " + std::to_string(m_score) ;
+	string text = "Score: " ;
+
+	{
+		stringstream ss ;
+		ss << m_score ;
+		text += ss.str() ;
+	}
 
     static ALLEGRO_COLOR color = al_map_rgba(255, 255, 255, 192) ;
     al_draw_text(m_font,

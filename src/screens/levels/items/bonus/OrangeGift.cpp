@@ -9,6 +9,9 @@ OrangeGift::OrangeGift(float xPos,
 }
 
 OrangeGift::OrangeGift(Position pos,
-                   Speed speed) : OrangeGift(pos.x, pos.y, speed.x, speed.y) {}
+                       Speed speed) : BonusEntity("orange_gift", 100, 65) {
+    setPosition(pos.x, pos.y) ;
+    setInitialSpeed(speed.x, speed.y) ;
+}
 
 OrangeGift::~OrangeGift() {}

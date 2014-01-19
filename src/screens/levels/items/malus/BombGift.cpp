@@ -16,12 +16,14 @@ BombGift::BombGift(float xPos,
                    float ySpeed) : MalusEntity("items/bomb_gift", 40, -50) {
     setPosition(xPos, yPos) ;
     setInitialSpeed(xSpeed, ySpeed) ;
-    m_angleStep = 0.f ;
 }
 
 /** @brief  Create a new BombGift with position and speed. */
 BombGift::BombGift(Position pos,
-                   Speed speed) : BombGift(pos.x, pos.y, speed.x, speed.y) {}
+                   Speed speed) : MalusEntity("items/bomb_gift", 40, -50) {
+    setPosition(pos.x, pos.y) ;
+    setInitialSpeed(speed.x, speed.y) ;
+}
 
 /** @brief  Destruction of a BombGift. */
 BombGift::~BombGift() {}

@@ -21,12 +21,13 @@ MenuScreen::MenuScreen(const string& background,
 }
 
 MenuScreen::~MenuScreen() {
-    for (auto& font : m_fonts) {
-        al_destroy_font(font.second) ;
+	for (FontIterator it = m_fonts.begin() ; it != m_fonts.end() ; it++) {
+        al_destroy_font(it -> second) ;
     }
 
-    for (auto& component : m_guiComponents) {
-        delete component ;
+	unsigned int max = m_guiComponents.size() ;
+    for (unsigned int i = 0 ; i < max ; i++) {
+        delete m_guiComponents[i] ;
     }
 }
 
@@ -36,9 +37,10 @@ void MenuScreen::update() {
 
     float cursorX = m_cursor -> getX() ;
     float cursorY = m_cursor -> getY() ;
-    for (auto& component : m_guiComponents) {
-        if (component -> testCursor(cursorX, cursorY)) {
-            component -> trigger() ;
+    unsigned int max = m_guiComponents.size() ;
+    for (unsigned int i = 0 ; i < max ; i++) {
+        if (m_guiComponents[i] -> testCursor(cursorX, cursorY)) {
+            m_guiComponents[i] -> trigger() ;
         }
     }
 }
@@ -54,8 +56,10 @@ void MenuScreen::additionnalDisplay() {
                  ALLEGRO_ALIGN_LEFT,
                  m_title.c_str()) ;
 
-    for (auto& component : m_guiComponents)
-        component -> display() ;
+    unsigned int max = m_guiComponents.size() ;
+    for (unsigned int i = 0 ; i < max ; i++) {
+        m_guiComponents[i] -> display() ;
+	}
 
     m_cursor -> display() ;
 }

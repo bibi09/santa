@@ -14,6 +14,8 @@
  * @author  Denis CARLUS
  */
 class AudioManager : private NoCopy {
+	typedef std::map<std::string, ALLEGRO_SAMPLE*>::iterator SampleIterator ;
+
     private:
         /** @brief Singleton of the AudioManager handler. */
         static AudioManager* Singleton ;

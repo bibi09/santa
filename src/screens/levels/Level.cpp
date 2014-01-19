@@ -55,8 +55,8 @@ void Level::explodeAll(ScoringEntity* source) {
 
 void Level::additionnalDisplay() {
     // Draw the different entities
-    for (auto& entity : m_items)
-        entity -> display() ;
+    for (EntityIterator it = m_items.begin() ; it != m_items.end() ; it++)
+        (*it) -> display() ;
 
     CursorEntity::getInstance() -> display() ;
     ConfettiManager::display() ;

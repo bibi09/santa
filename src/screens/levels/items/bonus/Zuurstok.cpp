@@ -12,6 +12,9 @@ Zuurstok::Zuurstok(float xPos,
 }
 
 Zuurstok::Zuurstok(Position pos,
-                   Speed speed) : Zuurstok(pos.x, pos.y, speed.x, speed.y) {}
+                   Speed speed) : BonusEntity("zuurstok", 30, 100) {
+    setPosition(pos.x, pos.y) ;
+    setInitialSpeed(speed.x, speed.y) ;
+}
 
 Zuurstok::~Zuurstok() {}

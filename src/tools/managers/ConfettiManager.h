@@ -14,6 +14,8 @@
  * @author  Denis CARLUS
  */
 class ConfettiManager : private NoCopy {
+	typedef std::list<ConfettiEntity*>::iterator ConfettiIterator ;
+
     private:
         /** @brief Singleton of the ConfettiManager handler. */
         static ConfettiManager* Singleton ;

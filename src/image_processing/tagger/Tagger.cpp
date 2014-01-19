@@ -53,10 +53,9 @@ void Tagger::run() {
 }
 
 Position Tagger::getFirstComponentCenter(int threshold) {
-    for (auto& component : m_connectedComponents) {
-        if ((component.second.getSize()) >= threshold) {
-            return component.second.getCenter() ;
-        }
+    for (ComponentIterator it = m_connectedComponents.begin() ; it != m_connectedComponents.end() ; it++) {
+        if ((it -> second.getSize()) >= threshold)
+            return it -> second.getCenter() ;
     }
 
     Position pos = {-1.f, -1.f} ;
@@ -67,9 +66,9 @@ void Tagger::colorizeComponents(int threshold) {
     // Create a white picture
     Mat colored(m_picture.rows, m_picture.cols, CV_8UC1, 255) ;
 
-    for (auto& component : m_connectedComponents) {
-        if ((component.second.getSize()) >= threshold)
-            component.second.draw(colored) ;
+	for (ComponentIterator it = m_connectedComponents.begin() ; it != m_connectedComponents.end() ; it++) {
+        if ((it -> second.getSize()) >= threshold)
+            it -> second.draw(colored) ;
     }
 }
 
@@ -77,8 +76,8 @@ void Tagger::colorizeComponents(int threshold) {
 unsigned int Tagger::countConnectedComponents(int threshold) {
     unsigned int count = 0 ;
     if (threshold > 0)  {
-        for (auto& component : m_connectedComponents) {
-            if ((component.second.getSize()) >= threshold)
+		for (ComponentIterator it = m_connectedComponents.begin() ; it != m_connectedComponents.end() ; it++) {
+            if ((it -> second.getSize()) >= threshold)
                 count++ ;
         }
     }
@@ -90,8 +89,8 @@ unsigned int Tagger::countConnectedComponents(int threshold) {
 }
 
 void Tagger::changeColors() {
-    for (auto& component : m_connectedComponents) {
-        component.second.setColor() ;
+	for (ComponentIterator it = m_connectedComponents.begin() ; it != m_connectedComponents.end() ; it++) {
+        it -> second.setColor() ;
     }
 }
 

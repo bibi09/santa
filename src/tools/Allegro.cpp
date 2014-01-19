@@ -63,8 +63,8 @@ void Allegro::run() {
 
 		if (ev.type == ALLEGRO_EVENT_TIMER) {
 		    if (ev.timer.source == m_FPSTimer -> getAllegroTimer()) {
-                for (auto& f : m_callBefore)
-                    f() ;
+//                for (auto& f : m_callBefore)
+//                    f() ;
 
 		        // Wait for the clock tic
 		        // Do the staff during one clock tic
@@ -75,8 +75,8 @@ void Allegro::run() {
                     CursorPositionBuffer::getInstance() -> lostCursor() ;
                 #endif
 
-                for (auto& f : m_callAfter)
-                    f() ;
+//                for (auto& f : m_callAfter)
+//                    f() ;
             }
 		}
 		else if (ev.type == ALLEGRO_EVENT_KEY_DOWN) {

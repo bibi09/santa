@@ -11,7 +11,10 @@ Position::Position(float x, float y) {
     this -> y = y ;
 }
 
-Position::Position(const Position& pos) : Position(pos.x, pos.y) {}
+Position::Position(const Position& pos) {
+	this -> x = pos.x ;
+	this -> y = pos.y ;
+}
 
 Position::~Position() {}
 

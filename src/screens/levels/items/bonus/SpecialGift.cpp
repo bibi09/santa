@@ -5,16 +5,18 @@ SpecialGift::SpecialGift(float xPos,
                          float xSpeed,
                          float ySpeed) : BonusEntity("special_gift",
                                                      100,
-                                                      1) {
+                                                     1) {
     m_soundPlayed = "golden_bonus" ;
     setPosition(xPos, yPos) ;
     setInitialSpeed(xSpeed, ySpeed) ;
 }
 
 SpecialGift::SpecialGift(Position pos,
-                         Speed speed) : SpecialGift(pos.x,
-                                                    pos.y,
-                                                    speed.x,
-                                                    speed.y) {}
+                         Speed speed) : BonusEntity("special_gift",
+                                                    100,
+                                                    1) {
+    setPosition(pos.x, pos.y) ;
+    setInitialSpeed(speed.x, speed.y) ;
+}
 
 SpecialGift::~SpecialGift() {}

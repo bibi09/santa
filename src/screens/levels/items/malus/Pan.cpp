@@ -12,7 +12,12 @@ Pan::Pan(float xPos,
 }
 
 Pan::Pan(Position pos,
-         Speed speed) : Pan(pos.x, pos.y, speed.x, speed.y) {}
+         Speed speed) : MalusEntity("items/pan", 10, -5) {
+    setPosition(pos.x, pos.y) ;
+    setInitialSpeed(speed.x, speed.y) ;
+    setCuttedSprite("items/cutted/pan_cutted") ;
+    makeDisappearOnBreak(false) ;
+}
 
 Pan::~Pan() {}
 

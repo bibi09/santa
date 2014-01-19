@@ -9,7 +9,7 @@ Window::Window(int sizeX, int sizeY) : m_display(0) {
 	assert(al_init()) ;
 
     #ifdef DEBUG
-    Logger::print("Set up display (" + to_string(sizeX) + "," + to_string(sizeY) + ")") ;
+    Logger::print("Set up display") ;
     #endif
 
     m_fullscreen = false ;

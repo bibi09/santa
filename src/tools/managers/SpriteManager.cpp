@@ -11,7 +11,7 @@ SpriteManager::SpriteManager() {
     assert(sem_init(&Access, 0, 1) == 0) ;
 }
 
-SpriteManager::~SpriteManager() {
+SpriteManager::~SpriteManager() throw() {
     sem_destroy(&Access) ;
 }
 

@@ -2,9 +2,15 @@
 
 using namespace std ;
 
-Rectangle2D::Rectangle2D() : Rectangle2D(0.f, 0.f, 0.f, 0.f) {}
+Rectangle2D::Rectangle2D() {
+    m_halfSize = {0.f, 0.f} ;
+    update(0.f, 0.f, 0.f, 0.f) ;
+}
 
-Rectangle2D::Rectangle2D(float w, float h) : Rectangle2D(0.f, 0.f, w, h) {}
+Rectangle2D::Rectangle2D(float w, float h) {
+    m_halfSize = {w/2, h/2} ;
+    update(0.f, 0.f, w, h) ;
+}
 
 
 Rectangle2D::Rectangle2D(float x, float y, float w, float h) {

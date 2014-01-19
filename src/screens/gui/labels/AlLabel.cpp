@@ -36,8 +36,9 @@ void AlLabel::adjustText() {
 
     string previousBuffer = "" ;
     string buffer = "" ;
-    for (auto& word : tokens) {
-        string tmp = word + " " ;
+	unsigned int max = tokens.size() ;
+    for (unsigned int i = 0 ; i < max ; i++) {
+        string tmp = tokens[i] + " " ;
         buffer += tmp ;
 
         if (al_get_text_width(m_font, buffer.c_str()) > m_maxWidth) {
@@ -55,10 +56,11 @@ void AlLabel::display() {
     unsigned int index = 0 ;
     int lineHeight = al_get_font_line_height(m_font) ;
 
-    for (auto& part : m_splits) {
+	unsigned int max = m_splits.size() ;
+    for (unsigned int i = 0 ; i < max ; i++) {
         al_draw_text(m_font, getColor(LAYER_FOREGROUND),
                      m_bounds.getX(), m_bounds.getY() + (1.5f * index * lineHeight),
-                     0, part.c_str()) ;
+                     0, m_splits[i].c_str()) ;
         index++ ;
     }
 }

@@ -10,6 +10,7 @@ https://www.youtube.com/watch?v=xLiEr_wwhIk
 Successfully compiled on ArchLinux (x86_64).
 
 Dependencies:
+-------------
 * Allegro 5 (http://alleg.sourceforge.net/)
 * OpenCV 2.4 (http://opencv.org/)
 * OpenJPEG (http://www.openjpeg.org/)
